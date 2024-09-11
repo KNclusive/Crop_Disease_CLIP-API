@@ -2,9 +2,9 @@ import requests
 from pathlib import Path
 
 def initialize_data():
-    domain_url = "http://13.48.71.25:8000/" #Amazon ECS culster-service IP
+    domain_url = <Your hosted container public_ip> #Amazon ECS culster-service IP
 
-    inference_image_path = Path('Inference_set')
+    inference_image_path = Path(<relative path to Inference_set>)
 
     images = list(inference_image_path.iterdir())
     return images, domain_url
