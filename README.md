@@ -23,3 +23,7 @@ For Deploying the API on hosted server Amazon AWS was choosen. Below are the ste
 
 
 The Test.py is an inference enabled python file to test the API. To run the file, replace the base_url with the public IP of your container. Provide image paths from the Inference_set or any other image.
+
+
+To run the docker file on local host clone the repository, cd into clip and run "docker compose up --build" in cmd. This will start creating a docker container and image.
+You can then see the IP for local host on which the container has spinned up, You can query, get-post on this local IP.
