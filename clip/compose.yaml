@@ -11,8 +11,8 @@ services:
   server:
     build:
       context: .
-    image: knclusive/crop-clip-fastapi:v1
-    container_name: crop-clip-fastapi
+    image: <yourreponame>/crop-disease-clip-fastapi:v1
+    container_name: crop-disease-clip-fastapi
     ports:
       - 8000:8000
 

@@ -22,4 +22,6 @@ For Deploying the API on hosted server Amazon AWS was choosen. Below are the ste
 9. This should spin up your container, inside the created service navigate towards network where you can find public IP on which your container will be available at the port mentioned by you.
 
 
-The Test.py is an inference enabled python file to test the API. To run the file, replace the base_url with the public IP of your container. Provide image paths from the Inference_set or any other image.
+The test.py is an inference enabled python file to test the API. To run the file, replace the base_url with the public IP of your container. Provide image paths from the Inference_set or any other image.
+
+Future scop would be creating an chatbot around this API, along with RAG from https://github.com/KNclusive/Retrieval-Augmented-Generation
