@@ -1,0 +1,7 @@
+fastapi
+Pillow
+python-multipart
+transformers
+uvicorn[standard]
+numpy
+nmslib
