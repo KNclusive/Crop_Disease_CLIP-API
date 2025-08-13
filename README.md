@@ -1,27 +1,49 @@
-# Crop_Disease_CLIP-API
-This repository contains code and procedure to build API inference endpoints using FastAPI for an custom CLIP model trained on crop-disease dataset and pushed to huggingface.
+# AgriCLIP — Crop Disease Detection via CLIP API
 
-For reference on training a CLIP model, please refer to this repository https://github.com/KNclusive/CLIP
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-For Deploying the API on hosted server Amazon AWS was choosen. Below are the steps to deploy API on AWS:
-1. Assuming here you have alredy contenerized your api application. (This repository uses docker to contenerize)
-2. Push docker image to docker hub. (docker push <yourreponame>/<yourapplicationname>:<yourtagname>)
-3. Create an account on aws if not already present. (This demo functions within the free tier limits of AWS ECS for more information visit here: https://aws.amazon.com/free/webapps/?p=ft&z=subnav&loc=3)
-4. Open your AWS Console and proceede to ECS (Elastic container service).
-5. Create an task definition where in you would:
-   a. Give a name to your container (task)
-   b. Define compute requirements. (This project functions 1cpu 3gb configurations which is the default)
-   c. provide your container url (url of the container pushed on docker hub i.e. <yourreponame>/<yourapplicationname>:<yourtagname>)
-   d. provide host and port mapping accordingly. (While creating the application the container host and post mapping is already done on 0.0.0.0 [means listen on all hosts] and 8000 port)
-   e. proceede to create the task definition but clicking on create.
-6. Create a cluster
-7. Inside the cluster you have two options:
-   a. Task for repetitive/ periodic/ batched requests (Static).
-   b. service (for dynamic web apps; usually better for API's which is our case.)
-8. Create an service by selecting the task definition created before.
-9. This should spin up your container, inside the created service navigate towards network where you can find public IP on which your container will be available at the port mentioned by you.
+## Overview
 
+**FarmSight** is an API that leverages OpenAI's CLIP (Contrastive Language–Image Pretraining) model to identify diseases in crop imagery. Upload a photo, and FarmSight analyses it to recommend potential disease diagnoses—ideal for both researchers and agritech developers.
 
-The test.py is an inference enabled python file to test the API. To run the file, replace the base_url with the public IP of your container. Provide image paths from the Inference_set or any other image.
+## Features
 
-Future scop would be creating an chatbot around this API, along with RAG from https://github.com/KNclusive/Retrieval-Augmented-Generation
+- **CLIP-based disease detection**: Uses image–text matching to classify crop conditions.
+- **Simple RESTful interface**: Upload images and receive JSON-formatted predictions.
+- **Customizable labels**: Easily extend detection categories.
+- **Lightweight & efficient**: Built for low-latency inference.
+
+## Notes:
+- For reference on training a CLIP model, please refer to this [repository](https://github.com/KNclusive/CLIP)
+- The repository Assumes the fine-tuned CLIP model is available in huggingface (Great choice now with XET replacing LFS)
+- The `test.py` is an inference enabled python file to test the API. To run the file, replace the base_url with the public IP of your container. Provide image paths from the Inference_set or any other image.
+
+## Quick Start
+
+### 1. Clone the repository:
+
+```bash
+git clone https://github.com/KNclusive/AgriCLIP.git
+run "python test.py"
+```
+
+## Deployment to AWS:
+- Assuming here you have alredy contenerized your api application. (This repository uses docker to contenerize)
+- Push docker image to docker hub. (docker push <yourreponame>/<yourapplicationname>:<yourtagname>)
+- Create an account on aws if not already present. (This demo functions within the free tier limits of AWS ECS for more information visit [here](https://aws.amazon.com/free/webapps/?p=ft&z=subnav&loc=3)
+- Open your AWS Console and proceede to ECS (Elastic container service).
+- Create an task definition where in you would:
+   - Give a name to your container (task).
+   - Define compute requirements. (This project functions 1cpu 3gb configurations which is the default)
+   - Provide your container url (url of the container pushed on docker hub i.e. <yourreponame>/<yourapplicationname>:<yourtagname>)
+   - Provide host and port mapping accordingly. (While creating the application the container host and post mapping is already done on 0.0.0.0 [means listen on all hosts] and 8000 port)
+   - Proceede to create the task definition but clicking on create.
+- Create a cluster
+- Inside the cluster you have two options:
+   - Task for repetitive/ periodic/ batched requests (Static).
+   - Service (for dynamic web apps; usually better for API's which is our case.)
+- Create an service by selecting the task definition created before.
+- This should spin up your container, inside the created service navigate towards network where you can find public IP on which your container will be available at the port mentioned by you.
+
+## Future Scope
+Creating an chatbot around this API, along with RAG [here](https://github.com/KNclusive/Retrieval-Augmented-Generation)
