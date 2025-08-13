@@ -1,4 +1,4 @@
-# AgriCLIP — Crop Disease Detection via CLIP API
+# FarmSight — Vigilant monitoring of crop health.
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
