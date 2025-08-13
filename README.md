@@ -30,7 +30,7 @@ run "python test.py"
 ## Deployment to AWS:
 - Assuming here you have alredy contenerized your api application. (This repository uses docker to contenerize)
 - Push docker image to docker hub. (docker push <yourreponame>/<yourapplicationname>:<yourtagname>)
-- Create an account on aws if not already present. (This demo functions within the free tier limits of AWS ECS for more information visit [here](https://aws.amazon.com/free/webapps/?p=ft&z=subnav&loc=3)
+- Create an account on aws if not already present. (We use free tier of AWS for more information visit [here](https://aws.amazon.com/free/webapps/?p=ft&z=subnav&loc=3)
 - Open your AWS Console and proceede to ECS (Elastic container service).
 - Create an task definition where in you would:
    - Give a name to your container (task).
